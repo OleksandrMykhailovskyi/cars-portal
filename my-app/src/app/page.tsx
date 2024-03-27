@@ -8,6 +8,7 @@ import PhoneIcon from "@/components/icons/PhoneIcon";
 import EnvelopeIcon from "@/components/icons/EnvelopeIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
+import EmblaCarousel from '@/components/general/Carousel/Carousel';
 
 export default function Home() {
   return (
@@ -20,26 +21,28 @@ export default function Home() {
           <button>
             <MenuIcon />
           </button>
-          <a className='relative w-full h-[35px]'>
+          <a className='relative w-full h-[30px]'>
             <Image 
               src={"logo.svg"}
               alt={"logo"}
               fill
+              priority
             />
           </a>
           <button 
             className="h-[35px] text-xs rounded font-medium tracking-[0.7px] px-3 py-[1px] leading-4 text-white bg-[#0071CE] flex items-center justify-between max-w-[130px] gap-2.5"
           >
-            <button>
+            <span>
               <PlusIcon />
-            </button>
+            </span>
             <span className="leading-[14px]">Zacznij sprzedawać</span>
           </button>
           
         </div>
       </header>
-      <main className="mx-4 divide-y flex flex-col mb-20">
-        <div className="my-6 flex flex-col gap-4">
+      <main className="divide-y flex flex-col mb-20">
+        <EmblaCarousel />
+        <div className="my-6 flex flex-col gap-4 mx-4">
           <div className="flex flex-col gap-2">
             <h3 className="text-2xl font-bold">Audi Q5</h3>
             <p className="text-[#020309] leading-5">2010 · 262 421 km · 1 968 cm3 · Diesel</p>
@@ -52,7 +55,7 @@ export default function Home() {
             <p className="text-[#66676C] text-sm">Do negocjacji</p>
           </div>
         </div>
-        <div className="pt-6 mb-6">
+        <div className="pt-6 mb-6 mx-4 ">
           <div className="p-4 bg-[#ECF5FE] flex justify-between">
             <div className="flex flex-col text-[#020309]">
               <p>Lub od</p>
@@ -67,7 +70,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="pt-6 mb-6 grid grid-cols-2 gap-y-4 gap-x-2">
+        <div className="pt-6 mb-6 grid grid-cols-2 gap-y-4 gap-x-2 mx-4 ">
           <div>
             <p className="text-sm text-[#020309] ">21.03.2024, 13:33</p>
           </div>
@@ -83,7 +86,7 @@ export default function Home() {
             <p className="text-[#0071CE] text-xs font-bold">Zgłoś naruszenie</p>
           </div>
         </div>
-        <div className="pt-6 mb-6 flex flex-col gap-8">
+        <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
           <h3 className="text-2xl font-bold">Szczegóły</h3>
           <div className="flex flex-col gap-4">
             {mockCarDetailsData.map(({title, value, isLink}, index) => (
