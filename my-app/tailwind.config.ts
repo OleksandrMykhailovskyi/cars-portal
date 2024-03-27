@@ -8,13 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      boxShadow: {
+        'header': 'rgb(20 35 85 / 15%) 0px 2px 6px 0',
+      }
     },
   },
   plugins: [],
+  darkMode: 'class'
 };
 export default config;
