@@ -1,7 +1,7 @@
 "use client"
 
-import React from 'react'
-import { EmblaOptionsType } from 'embla-carousel'
+import React, { useCallback, useEffect, useState } from 'react'
+import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import {
   PrevButton,
   NextButton,
@@ -10,12 +10,23 @@ import {
 import useEmblaCarousel from 'embla-carousel-react'
 import { mockCarouselData } from '../../../../mock'
 import Image from 'next/image'
+import CameraIcon from '@/components/icons/CameraIcon'
+import HeartIcon from '@/components/icons/HeartIcon'
 
 const EmblaCarousel = () => {
   const options: EmblaOptionsType = {}
-  // const SLIDE_COUNT = 10
-  // const slides = Array.from(Array(SLIDE_COUNT).keys())
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const logSlidesInView = useCallback((emblaApi: EmblaCarouselType) => {
+    if (emblaApi) {
+      setCurrentIndex(emblaApi.selectedScrollSnap());
+    }
+  }, [])
+
+  useEffect(() => {
+    emblaApi && emblaApi.on('slidesInView', logSlidesInView)
+  }, [emblaApi, logSlidesInView]);
 
   const {
     prevBtnDisabled,
@@ -26,12 +37,14 @@ const EmblaCarousel = () => {
 
   return (
     <section className="embla relative">
+      <div className='absolute right-4 top-4 bg-white rounded-full h-10 w-10 z-10'>
+        <button className='rounded font-bold leading-5 text-center bg-transparent flex justify-center items-center w-full h-full'>
+          <HeartIcon />
+        </button>
+      </div>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {mockCarouselData.map(({source, alt}, index) => (
-            // <div className="embla__slide px" key={index}>
-            //   <div className="embla__slide__number">{index + 1}</div>
-            // </div>
             <div key={index} className='relative w-full h-[269px] mx-4 embla__slide bg-[#EBECEF]'>
               <Image
                 src={source} 
@@ -46,6 +59,10 @@ const EmblaCarousel = () => {
       </div>
       <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
       <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      <div className='rounded-2xl bg-[#020309] absolute bottom-4 right-4 z-10 p-2 flex items-center gap-2'>
+        <CameraIcon />
+        <p className='text-xs leading-[14px] text-white'>{currentIndex + 1} / {mockCarouselData.length}</p>
+      </div>
     </section>
   )
 }
