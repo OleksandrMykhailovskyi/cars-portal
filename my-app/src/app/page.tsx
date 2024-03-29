@@ -1,7 +1,5 @@
 import Image from 'next/image'
 
-import { mockCarDetailsData } from "../../mock";
-
 import ShareIcon from "@/components/icons/ShareIcon";
 import BookmarkIcon from "@/components/icons/BookmarkIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
@@ -9,6 +7,9 @@ import EnvelopeIcon from "@/components/icons/EnvelopeIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
 import EmblaCarousel from '@/components/general/Carousel/Carousel';
+import { Modal } from '@/components/general/Modal';
+import { Footer } from '@/components/general/Footer';
+import { Characteristics } from '@/components/general/Characteristics';
 
 export default function Home() {
   return (
@@ -86,7 +87,7 @@ export default function Home() {
             <p className="text-[#0071CE] text-xs font-bold">Zgłoś naruszenie</p>
           </div>
         </div>
-        <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
+        {/* <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
           <h3 className="text-2xl font-bold">Szczegóły</h3>
           <div className="flex flex-col gap-4">
             {mockCarDetailsData.map(({title, value, isLink}, index) => (
@@ -104,9 +105,10 @@ export default function Home() {
               <p className="text-[#020309]">Wyświetl VIN</p>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Characteristics />
       </main>
-      <footer 
+      {/* <footer 
         className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#DCDDE0]"
       >
         <div className="flex gap-2 p-4">
@@ -116,12 +118,13 @@ export default function Home() {
             <span>Zadzwoń</span>
           </button>
           <button 
-            className="flex gap-2.5 py-4 px-6 w-full items-center justify-center bg-[#0071CE] text-white rounded-[4px] h-12 tracking-[0.7px] leading-4 font-medium">
+            className="flex gap-2.5 py-4 px-6 w-full items-center justify-center bg-[#0071CE] text-white rounded-[4px] h-12 tracking-[0.7px] leading-4 font-medium"
+          >
             <EnvelopeIcon />
             <span>Napisz</span>
           </button>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
