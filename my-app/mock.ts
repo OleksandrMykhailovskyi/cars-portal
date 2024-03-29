@@ -1,4 +1,4 @@
-export const mockCarDetailsData = [
+const mockCarDetailsData = [
   {
     title: "Oferta od",
     value: "Prywatne",
@@ -35,19 +35,9 @@ export const mockCarDetailsData = [
     isLink: false,
   },
   {
-    title: "Pojemność skokowa",
-    value: "1 968 cm3",
-    isLink: false,
-  },
-  {
     title: "Rodzaj paliwa",
     value: "Diesel",
     isLink: true,
-  },
-  {
-    title: "MOC",
-    value: "177 KM",
-    isLink: false,
   },
   {
     title: "Skrzynia biegów",
