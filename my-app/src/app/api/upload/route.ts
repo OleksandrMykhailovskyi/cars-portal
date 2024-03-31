@@ -15,14 +15,14 @@ export async function POST(request: NextRequest) {
   const carouselImagesDir = path.join(process.cwd(), 'public', 'carousel_images');
   await fs.mkdir(carouselImagesDir, { recursive: true });
 
-  // Get the files from the folder
-  const existingFiles = await fs.readdir(carouselImagesDir);
+  // // Get the files from the folder
+  // const existingFiles = await fs.readdir(carouselImagesDir);
 
-  // Delete each file in the folder
-  await Promise.all(existingFiles.map(async (file) => {
-    const filePath = path.join(carouselImagesDir, file);
-    await fs.unlink(filePath);
-  }));
+  // // Delete each file in the folder
+  // await Promise.all(existingFiles.map(async (file) => {
+  //   const filePath = path.join(carouselImagesDir, file);
+  //   await fs.unlink(filePath);
+  // }));
 
   const uploadedFileUrls = [];
 
