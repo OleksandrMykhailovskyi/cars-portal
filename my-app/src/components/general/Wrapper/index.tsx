@@ -4,10 +4,10 @@ import ShareIcon from "@/components/icons/ShareIcon"
 import EmblaCarousel from "../Carousel/Carousel"
 import BookmarkIcon from "@/components/icons/BookmarkIcon"
 import { Characteristics } from "../Characteristics"
-import { CharacteristicsType } from "@/services/types/types"
+import { CharacteristicsType, DefaultDataType } from "@/services/types/types"
 import { useState } from "react"
 
-export const defaultFormData: CharacteristicsType[] = [
+export const defaultCharacteristicsData: CharacteristicsType[] = [
   {
     title: "Oferta od",
     value: "-",
@@ -95,25 +95,51 @@ export const defaultFormData: CharacteristicsType[] = [
   },
 ]
 
+export const defaultData: DefaultDataType = {
+  brand: "-",
+  model: "-",
+  year_production: "-",
+  course: "-",
+  displacement: "-",
+  fuel_type: "-",
+  price: "-",
+  installment_plan_price: "-",
+  date: "-",
+  time: "-",
+  id: "-",
+  characteristics: defaultCharacteristicsData
+}
+
 export const Wrapper = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [formData, setFormData] = useState(defaultFormData);
+  const [formData, setFormData] = useState(defaultData);
   const [imagesData, setImagesData] = useState();
+
+  const {
+    brand, 
+    course, 
+    date, 
+    displacement, 
+    fuel_type, 
+    id, 
+    installment_plan_price, 
+    model, 
+    price, 
+    time, 
+    year_production
+  } = formData;
   
   return(
     <>
       <EmblaCarousel imagesData={imagesData} />
         <div className="my-6 flex flex-col gap-4 mx-4">
-          <div className="flex flex-col gap-2">
-            <h3 className="text-2xl font-bold">Audi Q5</h3>
-            <p className="text-[#020309] leading-5">2010 · 262 421 km · 1 968 cm3 · Diesel</p>
+          <div className="flex flex-col gap-2 text-[#020309]">
+            <h3 className="text-2xl font-bold">{brand} {model}</h3>
+            <p className="leading-5">{year_production} · {course} km · {displacement} cm3 · {fuel_type}</p>
           </div>
-          <div>
-            <div className="flex items-baseline gap-2 text-[#C82814]">
-              <h3 className="text-2xl font-bold">49 800</h3>
-              <p>PLN</p>
-            </div>
-            <p className="text-[#66676C] text-sm">Do negocjacji</p>
+          <div className="flex items-baseline gap-2 text-[#C82814]">
+            <h3 className="text-2xl font-bold">{price}</h3>
+            <p>PLN</p>
           </div>
         </div>
         <div className="pt-6 mb-6 mx-4 ">
@@ -121,7 +147,7 @@ export const Wrapper = () => {
             <div className="flex flex-col text-[#020309]">
               <p>Lub od</p>
               <div className="flex">
-                <span className="font-bold">904 PLN</span>
+                <span className="font-bold">{installment_plan_price} PLN</span>
                 /mc
               </div>
 
@@ -133,10 +159,10 @@ export const Wrapper = () => {
         </div>
         <div className="pt-6 mb-6 grid grid-cols-2 gap-y-4 gap-x-2 mx-4 ">
           <div>
-            <p className="text-sm text-[#020309] ">21.03.2024, 13:33</p>
+            <p className="text-sm text-[#020309] ">{date}, {time}</p>
           </div>
           <div>
-            <p className="text-sm text-[#020309]">ID: 612622343423</p>
+            <p className="text-sm text-[#020309]">ID: {id}</p>
           </div>
           <div className="flex gap-2 items-center">
             <ShareIcon />
