@@ -1,6 +1,6 @@
 "use client"
 
-import { CharacteristicsType, DefaultDataType, Inputs } from "@/services/types/types"
+import { DefaultDataType, Inputs } from "@/services/types/types"
 import { UploadButton } from "@/utils/uploadthing"
 import { useForm, SubmitHandler } from "react-hook-form"
 
