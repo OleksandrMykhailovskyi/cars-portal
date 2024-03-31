@@ -99,7 +99,7 @@ export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalO
       <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
         <h3 className="text-2xl font-bold">Szczegóły</h3>
         <div className="flex flex-col gap-4">
-          {formData.map(({title, value, isLink}, index) => (
+          {formData.map(({title, value, isLink}: any, index: number) => (
             <div key={index} className={"grid grid-cols-2 gap-x-4 text-sm"}>
               <p className="text-[#66676C]">{title}</p>
               {isLink ? <a href="/" className=" text-[#0071CE] underline">{value}</a> : <p className="text-[#020309]">{value}</p>}

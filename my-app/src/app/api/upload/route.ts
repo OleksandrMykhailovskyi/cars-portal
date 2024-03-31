@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 
 export async function POST(request: NextRequest) {
   const data = await request.formData();
-  const files: FileList | null = data.getAll('files[]');
+  const files : any = data.getAll('files[]');
 
   if (!files || files.length === 0) {
     return NextResponse.json({ success: false, message: 'No files uploaded' });

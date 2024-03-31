@@ -16,7 +16,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     handleSubmit,
   } = useForm<Inputs>()
 
-  const [file, setFile] = useState<File>()
+  const [file, setFile] = useState<any>()
 
   const onSubmit: SubmitHandler<Inputs> = async ({
     offer_from, 
