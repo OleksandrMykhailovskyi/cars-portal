@@ -1,20 +1,24 @@
 "use client"
 
 import { CharacteristicsType, Inputs } from "@/services/types/types"
+import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type CustomFormTypes = {
   setIsModalOpen: (isOpen: boolean) => void,
   setFormData: (formData: CharacteristicsType[]) => void,
+  setImagesData: any
 }
 
-export const CustomForm = ({setIsModalOpen, setFormData} : CustomFormTypes) => {
+export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : CustomFormTypes) => {
   const {
     register,
     handleSubmit,
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = ({
+  const [file, setFile] = useState<File>()
+
+  const onSubmit: SubmitHandler<Inputs> = async ({
     offer_from, 
     show_offers_with_VIN, 
     brand, 
@@ -31,7 +35,32 @@ export const CustomForm = ({setIsModalOpen, setFormData} : CustomFormTypes) => {
     is_registered_in_poland,
     absence_of_accidents,
     condition,
-  }) => {
+  }, event) => {
+    event?.preventDefault();
+    if (!file) return
+
+    try {
+      const data = new FormData()
+
+      for (let i = 0; i < file.length; i++) {
+        data.append('files[]', file[i])
+      }
+
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: data
+      })
+
+      const response_data = await res.json();
+
+      setImagesData(response_data.uploadedFileUrls)
+
+      if (!res.ok) throw new Error(await res.text())
+    } catch (e: any) {
+      // Handle errors here
+      console.error(e)
+    }
+    
     const payload = [
       {
         title: "Oferta od",
@@ -125,6 +154,13 @@ export const CustomForm = ({setIsModalOpen, setFormData} : CustomFormTypes) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h3 className="font-bold">Введите значения характеристик</h3>
+        <input
+          type="file"
+          name="file"
+          multiple
+          onChange={(e) => setFile(e.target.files)}
+        />
+        <input type="submit" value="Upload" />
       <div className="flex flex-col gap-2 overflow-scroll">
         <label className="flex gap-2 items-center justify-between">
           <span className="text-sm">Тип продавца</span>

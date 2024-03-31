@@ -1,9 +1,6 @@
 "use client"
 
-import EnvelopeIcon from "@/components/icons/EnvelopeIcon"
-import PhoneIcon from "@/components/icons/PhoneIcon"
 import { useState } from "react"
-import { useForm, SubmitHandler } from "react-hook-form"
 import { Modal } from "../Modal"
 import { Footer } from "../Footer"
 import { CharacteristicsType } from "@/services/types/types"
@@ -96,10 +93,7 @@ export const defaultFormData: CharacteristicsType[] = [
   },
 ]
 
-export const Characteristics = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [formData, setFormData] = useState(defaultFormData);
-  
+export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalOpen, setImagesData} : any) => {
   return (
     <>
       <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
@@ -129,6 +123,7 @@ export const Characteristics = () => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         setFormData={setFormData}
+        setImagesData={setImagesData}
       />
     </>
   )
