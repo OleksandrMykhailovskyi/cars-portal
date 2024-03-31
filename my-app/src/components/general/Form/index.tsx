@@ -157,7 +157,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
       className="relative transform rounded-lg bg-white text-left shadow-xl transition-all flex flex-col gap-3 p-4 max-h-[500px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h3 className="font-bold">Введите значения характеристик</h3>
+      <h3 className="font-bold">Введите значения характеристик </h3>
         <UploadButton
           endpoint="imageUploader"
           onClientUploadComplete={(res: any) => {
