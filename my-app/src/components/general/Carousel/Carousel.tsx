@@ -45,10 +45,10 @@ const EmblaCarousel = ({imagesData}: any) => {
       </div>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {imagesData?.map(({ url }: any, index: number) => (
+          {imagesData?.map(({ imageUrl }: any, index: number) => (
             <div key={index} className='relative w-full h-[269px] mx-4 embla__slide bg-[#EBECEF]'>
               <Image
-                src={url} 
+                src={imageUrl} 
                 alt={'cars'}
                 fill
                 priority
