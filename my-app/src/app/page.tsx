@@ -1,11 +1,7 @@
 import Image from 'next/image'
 
-import ShareIcon from "@/components/icons/ShareIcon";
-import BookmarkIcon from "@/components/icons/BookmarkIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
-import EmblaCarousel from '@/components/general/Carousel/Carousel';
-import { Characteristics } from '@/components/general/Characteristics';
 import { Wrapper } from '@/components/general/Wrapper';
 
 export default function Home() {
@@ -35,7 +31,6 @@ export default function Home() {
             </span>
             <span className="leading-[14px]">Zacznij sprzedawać</span>
           </button>
-          
         </div>
       </header>
       <main className="divide-y flex flex-col mb-20">

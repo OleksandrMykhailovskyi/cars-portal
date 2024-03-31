@@ -1,13 +1,12 @@
 "use client"
 
-import { CharacteristicsType, Inputs } from "@/services/types/types"
+import { CharacteristicsType, DefaultDataType, Inputs } from "@/services/types/types"
 import { UploadButton } from "@/utils/uploadthing"
-import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type CustomFormTypes = {
   setIsModalOpen: (isOpen: boolean) => void,
-  setFormData: (formData: CharacteristicsType[]) => void,
+  setFormData: (formData: DefaultDataType) => void,
   setImagesData: any
 }
 
@@ -28,6 +27,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     generation,
     year_production,
     course,
+    displacement,
     fuel_type,
     transmission,
     car_type,
@@ -37,6 +37,11 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     is_registered_in_poland,
     absence_of_accidents,
     condition,
+    price,
+    installment_plan_price,
+    date,
+    time,
+    id,
   }, event) => {
     event?.preventDefault();
     // if (!file) return
@@ -63,7 +68,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     //   console.error(e)
     // }
     
-    const payload = [
+    const characteristicsPayload = [
       {
         title: "Oferta od",
         value: offer_from,
@@ -97,6 +102,11 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
       {
         title: "Przebieg",
         value: course,
+        isLink: false,
+      },
+      {
+        title: "Pojemność skokowa",
+        value: displacement,
         isLink: false,
       },
       {
@@ -145,6 +155,21 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
         isLink: true,
       },
     ]
+
+    const payload : DefaultDataType = {
+      brand,
+      model,
+      year_production,
+      course,
+      displacement,
+      fuel_type,
+      price,
+      installment_plan_price,
+      date,
+      time,
+      id,
+      characteristics: characteristicsPayload
+    }
 
     setFormData(payload)
     setIsModalOpen(false)
@@ -208,6 +233,10 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
           <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("course")} />
         </label>
         <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">Pojemność skokowa</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("displacement")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
           <span className="text-sm">Тип двигателя</span>
           <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("fuel_type")} />
         </label>
@@ -242,6 +271,26 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
         <label className="flex gap-2 items-center justify-between">
           <span className="text-sm">Общее состояние</span>
           <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("condition")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">Цена</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("price")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">Цена если брать в рассрочку</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("installment_plan_price")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">Дата</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("date")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">Время</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("time")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">ID</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("id")} />
         </label>
       </div>
 

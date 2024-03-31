@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { Modal } from "../Modal"
 import { Footer } from "../Footer"
 import { CharacteristicsType } from "@/services/types/types"
@@ -97,13 +96,15 @@ export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalO
   return (
     <>
       <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
-        <h3 className="text-2xl font-bold">Szczegóły</h3>
+        <h3 className="text-[#020309] text-2xl font-bold">Szczegóły</h3>
         <div className="flex flex-col gap-4">
-          {formData.map(({title, value, isLink}: any, index: number) => (
-            <div key={index} className={"grid grid-cols-2 gap-x-4 text-sm"}>
-              <p className="text-[#66676C]">{title}</p>
-              {isLink ? <a href="/" className=" text-[#0071CE] underline">{value}</a> : <p className="text-[#020309]">{value}</p>}
-            </div>
+          {formData.characteristics.map(({ title, value, isLink }: any, index: number) => (
+            value !== "" && (
+              <div key={index} className={"grid grid-cols-2 gap-x-4 text-sm"}>
+                <p className="text-[#66676C]">{title}</p>
+                {isLink ? <a href="/" className="text-[#0071CE] underline">{value}</a> : <p className="text-[#020309]">{value}</p>}
+              </div>
+            )
           ))}
           <div className={"grid grid-cols-2 gap-x-4 text-[#44aa00] text-sm"}>
             <p>Kup ten pojazd na raty</p>
