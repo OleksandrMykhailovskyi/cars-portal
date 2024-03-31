@@ -21,4 +21,25 @@ export type Inputs = {
   is_registered_in_poland: string,
   absence_of_accidents: string,
   condition: string,
+  displacement: string,
+  price: string,
+  installment_plan_price: string,
+  date: string,
+  time: string,
+  id: string,
+}
+
+export type DefaultDataType = {
+  brand: string,
+  model: string,
+  year_production: string,
+  course: string,
+  displacement: string,
+  fuel_type: string,
+  price: string,
+  installment_plan_price: string,
+  date: string,
+  time: string,
+  id: string,
+  characteristics: CharacteristicsType[]
 }

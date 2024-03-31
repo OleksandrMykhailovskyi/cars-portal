@@ -1,10 +1,10 @@
-import { CharacteristicsType } from "@/services/types/types"
+import { DefaultDataType } from "@/services/types/types"
 import { CustomForm } from "../Form"
 
 type ModalProps = {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
-  setFormData: (formData: CharacteristicsType[]) => void
+  setFormData: (formData: DefaultDataType) => void
   setImagesData: any
 }
 
