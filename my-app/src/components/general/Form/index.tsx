@@ -17,8 +17,8 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     handleSubmit,
   } = useForm<Inputs>()
 
-  const [file, setFile] = useState<any>()
-  const [images, setImages] = useState([])
+  // const [file, setFile] = useState<any>()
+  // const [images, setImages] = useState([])
 
   const onSubmit: SubmitHandler<Inputs> = async ({
     offer_from, 
@@ -39,29 +39,29 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     condition,
   }, event) => {
     event?.preventDefault();
-    if (!file) return
+    // if (!file) return
 
-    try {
-      const data = new FormData()
+    // try {
+    //   const data = new FormData()
 
-      for (let i = 0; i < file.length; i++) {
-        data.append('files[]', file[i])
-      }
+    //   for (let i = 0; i < file.length; i++) {
+    //     data.append('files[]', file[i])
+    //   }
 
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: data
-      })
+    //   const res = await fetch('/api/upload', {
+    //     method: 'POST',
+    //     body: data
+    //   })
 
-      const response_data = await res.json();
+    //   const response_data = await res.json();
 
-      setImagesData(response_data.uploadedFileUrls)
+    //   setImagesData(response_data.uploadedFileUrls)
 
-      if (!res.ok) throw new Error(await res.text())
-    } catch (e: any) {
-      // Handle errors here
-      console.error(e)
-    }
+    //   if (!res.ok) throw new Error(await res.text())
+    // } catch (e: any) {
+    //   // Handle errors here
+    //   console.error(e)
+    // }
     
     const payload = [
       {
@@ -149,8 +149,6 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     setFormData(payload)
     setIsModalOpen(false)
   }
-
-  console.log(images, 'CHECK here images')
   
   return (
     <form
@@ -158,28 +156,28 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
       onSubmit={handleSubmit(onSubmit)}
     >
       <h3 className="font-bold">Введите значения характеристик </h3>
-        {/* <UploadButton
+        <UploadButton
           endpoint="imageUploader"
+          className="ut-button:bg-red-500"
           onClientUploadComplete={(res: any) => {
             // Do something with the response
             if(res){
               setImagesData(res)
               console.log("Files: ", JSON.stringify(res));
             }
-            // alert("Upload Completed");
           }}
           onUploadError={(error: Error) => {
             // Do something with the error.
             alert(`ERROR! ${error.message}`);
           }}
-        /> */}
-        <input
+        />
+        {/* <input
           type="file"
           name="file"
           multiple
           onChange={(e) => setFile(e.target.files)}
         />
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Upload" /> */}
       <div className="flex flex-col gap-2 overflow-scroll">
         <label className="flex gap-2 items-center justify-between">
           <span className="text-sm">Тип продавца</span>
