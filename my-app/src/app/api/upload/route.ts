@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs/promises';
 
 export async function POST(request: NextRequest) {
+  console.log('check')
   const data = await request.formData();
   const files : any = data.getAll('files[]');
 
