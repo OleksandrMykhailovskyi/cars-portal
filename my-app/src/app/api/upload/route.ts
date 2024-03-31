@@ -11,18 +11,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, message: 'No files uploaded' });
   }
 
-  // Check whether the folder exists and create it if no
-  const carouselImagesDir = path.join(process.cwd(), 'public', 'carousel_images');
+  // Check whether the folder exists and create it if not
+  const carouselImagesDir = path.join(process.cwd(), 'tmp', 'carousel_images');
   await fs.mkdir(carouselImagesDir, { recursive: true });
 
-  // Get the files from the folder
-  const existingFiles = await fs.readdir(carouselImagesDir);
+  // // Get the files from the folder
+  // const existingFiles = await fs.readdir(carouselImagesDir);
 
-  // Delete each file in the folder
-  await Promise.all(existingFiles.map(async (file) => {
-    const filePath = path.join(carouselImagesDir, file);
-    await fs.unlink(filePath);
-  }));
+  // // Delete each file in the folder
+  // await Promise.all(existingFiles.map(async (file) => {
+  //   const filePath = path.join(carouselImagesDir, file);
+  //   await fs.unlink(filePath);
+  // }));
 
   const uploadedFileUrls = [];
 
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     await fs.writeFile(filePath, buffer);
 
     // Get the image URL
-    const imageUrl = `/carousel_images/${fileName}`;
+    const imageUrl = `/tmp/carousel_images/${fileName}`;
 
     // Add the url and alt to the result array
     uploadedFileUrls.push({
