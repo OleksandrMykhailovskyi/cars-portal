@@ -8,12 +8,11 @@ import {
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
 import useEmblaCarousel from 'embla-carousel-react'
-import { mockCarouselData } from '../../../../mock'
 import Image from 'next/image'
 import CameraIcon from '@/components/icons/CameraIcon'
 import HeartIcon from '@/components/icons/HeartIcon'
 
-const EmblaCarousel = () => {
+const EmblaCarousel = ({imagesData}: any) => {
   const options: EmblaOptionsType = {}
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,6 +34,8 @@ const EmblaCarousel = () => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
 
+  
+
   return (
     <section className="embla relative">
       <div className='absolute right-4 top-4 bg-white rounded-full h-10 w-10 z-10'>
@@ -44,10 +45,10 @@ const EmblaCarousel = () => {
       </div>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {mockCarouselData.map(({source, alt}, index) => (
+          {imagesData?.map(({ imageUrl, alt }: any, index: number) => (
             <div key={index} className='relative w-full h-[269px] mx-4 embla__slide bg-[#EBECEF]'>
               <Image
-                src={source} 
+                src={imageUrl} 
                 alt={alt}
                 fill
                 priority
@@ -61,7 +62,7 @@ const EmblaCarousel = () => {
       <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       <div className='rounded-2xl bg-[#020309] absolute bottom-4 right-4 z-10 p-2 flex items-center gap-2'>
         <CameraIcon />
-        <p className='text-xs leading-[14px] text-white'>{currentIndex + 1} / {mockCarouselData.length}</p>
+        <p className='text-xs leading-[14px] text-white'>{currentIndex + 1} / {imagesData?.length}</p>
       </div>
     </section>
   )
