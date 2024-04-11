@@ -33,7 +33,7 @@ export default function Home() {
           </button>
         </div>
       </header>
-      <main className="divide-y flex flex-col mb-20">
+      <main className="flex flex-col mb-20">
         <Wrapper />
         {/* <EmblaCarousel />
         <div className="my-6 flex flex-col gap-4 mx-4">
