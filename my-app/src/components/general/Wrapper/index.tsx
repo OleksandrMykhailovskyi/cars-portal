@@ -107,6 +107,7 @@ export const defaultData: DefaultDataType = {
   date: "-",
   time: "-",
   id: "-",
+  vin: "-",
   characteristics: defaultCharacteristicsData
 }
 

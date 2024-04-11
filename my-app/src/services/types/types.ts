@@ -27,6 +27,7 @@ export type Inputs = {
   date: string,
   time: string,
   id: string,
+  vin: string,
 }
 
 export type DefaultDataType = {
@@ -41,5 +42,6 @@ export type DefaultDataType = {
   date: string,
   time: string,
   id: string,
+  vin: string,
   characteristics: CharacteristicsType[]
 }

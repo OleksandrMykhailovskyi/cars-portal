@@ -42,6 +42,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
     date,
     time,
     id,
+    vin,
   }, event) => {
     event?.preventDefault();
     // if (!file) return
@@ -168,6 +169,7 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
       date,
       time,
       id,
+      vin,
       characteristics: characteristicsPayload
     }
 
@@ -291,6 +293,10 @@ export const CustomForm = ({setIsModalOpen, setFormData, setImagesData} : Custom
         <label className="flex gap-2 items-center justify-between">
           <span className="text-sm">ID</span>
           <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("id")} />
+        </label>
+        <label className="flex gap-2 items-center justify-between">
+          <span className="text-sm">VIN number</span>
+          <input className="border border-[#0071CE] rounded p-1" placeholder="" {...register("vin")} />
         </label>
       </div>
 

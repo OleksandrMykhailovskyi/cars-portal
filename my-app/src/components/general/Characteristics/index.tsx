@@ -95,7 +95,7 @@ export const defaultFormData: CharacteristicsType[] = [
 export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalOpen, setImagesData} : any) => {
   return (
     <>
-      <div className="pt-6 mb-6 flex flex-col gap-8 mx-4">
+      <div className="pt-6 mb-6 flex flex-col mx-4">
         <h3 className="text-[#020309] text-2xl font-bold">Szczegóły</h3>
         <div className="flex flex-col gap-4">
           {formData.characteristics.map(({ title, value, isLink }: any, index: number) => (
@@ -110,10 +110,11 @@ export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalO
             <p>Kup ten pojazd na raty</p>
             <p>Oblicz</p>
           </div>
-          <div className={"grid grid-cols-2 gap-x-4 text-sm mt-4"}>
-            <p className="text-[#66676C]">VIN</p>
-            <p className="text-[#020309]">Wyświetl VIN</p>
-          </div>
+          <div></div>
+        </div>
+        <div className={"grid grid-cols-2 gap-x-4 text-sm mt-4 w-[90%]"}>
+          <p className="text-[#66676C]">VIN</p>
+          <p className="text-[#020309]">{formData.vin}</p>
         </div>
       </div>
       <Footer
