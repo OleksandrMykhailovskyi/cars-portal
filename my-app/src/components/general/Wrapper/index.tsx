@@ -133,7 +133,7 @@ export const Wrapper = () => {
   return(
     <>
       <EmblaCarousel imagesData={imagesData} />
-        <div className="my-6 flex flex-col gap-4 mx-4">
+        <div className="my-6 flex flex-col gap-4 mx-4 divide-y-0">
           <div className="flex flex-col gap-2 text-[#020309]">
             <h3 className="text-2xl font-bold">{brand} {model}</h3>
             <p className="leading-5">{year_production} · {course} km · {displacement} cm3 · {fuel_type}</p>
@@ -143,7 +143,7 @@ export const Wrapper = () => {
             <p>PLN</p>
           </div>
         </div>
-        <div className="pt-6 mb-6 mx-4 ">
+        <div className="pt-6 mb-6 mx-4 border-t">
           <div className="p-4 bg-[#ECF5FE] flex justify-between">
             <div className="flex flex-col text-[#020309]">
               <p>Lub od</p>
@@ -158,7 +158,7 @@ export const Wrapper = () => {
             </button>
           </div>
         </div>
-        <div className="pt-6 mb-6 grid grid-cols-2 gap-y-4 gap-x-2 mx-4 ">
+        <div className="pt-6 mb-6 grid grid-cols-2 gap-y-4 gap-x-2 mx-4 border-t">
           <div>
             <p className="text-sm text-[#020309] ">{date}, {time}</p>
           </div>

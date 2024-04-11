@@ -95,8 +95,8 @@ export const defaultFormData: CharacteristicsType[] = [
 export const Characteristics = ({formData, setFormData, isModalOpen, setIsModalOpen, setImagesData} : any) => {
   return (
     <>
-      <div className="pt-6 mb-6 flex flex-col mx-4">
-        <h3 className="text-[#020309] text-2xl font-bold">Szczegóły</h3>
+      <div className="pt-6 mb-6 flex flex-col mx-4 border-t">
+        <h3 className="text-[#020309] text-2xl font-bold mb-6">Szczegóły</h3>
         <div className="flex flex-col gap-4">
           {formData.characteristics.map(({ title, value, isLink }: any, index: number) => (
             value !== "" && (
